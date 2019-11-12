@@ -1,0 +1,20 @@
+#!/bin/bash
+
+dir=$(pwd)
+cd "/Users/bakribbs/GitHub/Cloud/Cloud-Native/Kabanero/stacks/ci/build/prefetch"
+# Fetched from https://github.com/appsody/stacks/releases/latest/download/experimental-index.yaml on Fri Sep 27 16:14:08 EDT 2019
+# https://github.com/appsody/stacks/releases/download/nodejs-functions-v0.1.3/experimental.nodejs-functions.templates.simple.tar.gz
+checksum="fc77b996b4b2ea184ef75948ebcf8707eaef8d72 *experimental.nodejs-functions.templates.simple.tar.gz"
+if echo "$checksum" | shasum --status -c -
+then
+    if [ "$1" == "0.1.3" ]
+    then
+        echo ok
+    else
+        echo "0.1.3"
+    fi
+else
+    echo nomatch
+fi
+cd $dir
+

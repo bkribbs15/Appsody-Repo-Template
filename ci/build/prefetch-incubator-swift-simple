@@ -1,0 +1,20 @@
+#!/bin/bash
+
+dir=$(pwd)
+cd "/Users/bakribbs/GitHub/Cloud/Cloud-Native/Kabanero/stacks/ci/build/prefetch"
+# Fetched from https://github.com/appsody/stacks/releases/latest/download/incubator-index.yaml on Fri Sep 27 16:14:11 EDT 2019
+# https://github.com/appsody/stacks/releases/download/swift-v0.1.4/incubator.swift.templates.simple.tar.gz
+checksum="9c62f329927ab4de1992a6916c8073957f4e6096 *incubator.swift.templates.simple.tar.gz"
+if echo "$checksum" | shasum --status -c -
+then
+    if [ "$1" == "0.1.4" ]
+    then
+        echo ok
+    else
+        echo "0.1.4"
+    fi
+else
+    echo nomatch
+fi
+cd $dir
+

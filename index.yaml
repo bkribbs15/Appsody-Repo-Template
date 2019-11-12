@@ -1,0 +1,13 @@
+apiVersion: v1
+projects:
+  gradle-jdk8:
+  - updated: 2019-08-02T23:12:19+0000
+    name: Gradle Stack
+    version: 0.0.1
+    description: Gradle Stack using Java 8
+    license: Apache-2.0
+    maintainers:
+       - name: Alex Irazabal
+        email: irazabal@us.ibm.com
+        github-id: airazabal
+    default-template: default

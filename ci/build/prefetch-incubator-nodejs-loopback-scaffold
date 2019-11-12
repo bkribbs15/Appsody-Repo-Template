@@ -1,0 +1,20 @@
+#!/bin/bash
+
+dir=$(pwd)
+cd "/Users/bakribbs/GitHub/Cloud/Cloud-Native/Kabanero/stacks/ci/build/prefetch"
+# Fetched from https://github.com/appsody/stacks/releases/latest/download/incubator-index.yaml on Fri Sep 27 16:14:11 EDT 2019
+# https://github.com/appsody/stacks/releases/download/nodejs-loopback-v0.1.4/incubator.nodejs-loopback.templates.scaffold.tar.gz
+checksum="6d2334bd2b92e6ab619e003f0f6c0d465a0e24e7 *incubator.nodejs-loopback.templates.scaffold.tar.gz"
+if echo "$checksum" | shasum --status -c -
+then
+    if [ "$1" == "0.1.4" ]
+    then
+        echo ok
+    else
+        echo "0.1.4"
+    fi
+else
+    echo nomatch
+fi
+cd $dir
+

@@ -1,0 +1,48 @@
+>  docker build -t appsody/appsody-index -t appsody/appsody-index:SNAPSHOT -f /Users/bakribbs/GitHub/Cloud/Cloud-Native/Kabanero/stacks/ci/nginx/Dockerfile /Users/bakribbs/GitHub/Cloud/Cloud-Native/Kabanero/stacks/ci
+Sending build context to Docker daemon  356.4kB
+Step 1/14 : ARG NGINX_IMAGE=nginx:stable-alpine
+Step 2/14 : FROM $NGINX_IMAGE
+ ---> 8587e8f26fc1
+Step 3/14 : COPY nginx/nginx.conf  /etc/nginx/nginx.conf
+ ---> Using cache
+ ---> f8410bfaeade
+Step 4/14 : COPY nginx/nginx-ssl.conf  /etc/nginx/nginx-ssl.conf
+ ---> Using cache
+ ---> 7ec2771e2571
+Step 5/14 : COPY nginx/startup.sh  /opt/startup.sh
+ ---> Using cache
+ ---> e2f19fe2abeb
+Step 6/14 : COPY build/prefetch    /opt/www/public
+ ---> Using cache
+ ---> 7fbbc60012d2
+Step 7/14 : COPY assets            /opt/www/public
+ ---> b3f9a1452d9a
+Step 8/14 : COPY build/index-src   /opt/www/public
+ ---> a81647e8ecf7
+Step 9/14 : RUN rm /opt/www/public/*-local.yaml
+ ---> Running in fc266f177983
+Removing intermediate container fc266f177983
+ ---> bfdd292533d9
+Step 10/14 : EXPOSE 8080
+ ---> Running in 491b4f01215c
+Removing intermediate container 491b4f01215c
+ ---> a0a6b39f56e7
+Step 11/14 : EXPOSE 8443
+ ---> Running in afea216b2eca
+Removing intermediate container afea216b2eca
+ ---> 332e9b6d45fa
+Step 12/14 : RUN touch /var/run/nginx.pid &&   chown -R nginx:0 /var/run/nginx.pid /var/cache/nginx /opt/www/public /etc/nginx /run &&   chmod -R g=u /opt/www/public /var/cache/nginx /etc/nginx /var/run/nginx.pid /run
+ ---> Running in 49b44e8195e9
+Removing intermediate container 49b44e8195e9
+ ---> d132d0616918
+Step 13/14 : USER nginx
+ ---> Running in 8cf727c68dfc
+Removing intermediate container 8cf727c68dfc
+ ---> 219e7fcd6952
+Step 14/14 : ENTRYPOINT ["/opt/startup.sh"]
+ ---> Running in 3f45c5154ca1
+Removing intermediate container 3f45c5154ca1
+ ---> a0ad6777ba4c
+Successfully built a0ad6777ba4c
+Successfully tagged appsody/appsody-index:latest
+Successfully tagged appsody/appsody-index:SNAPSHOT

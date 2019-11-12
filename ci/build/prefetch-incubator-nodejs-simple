@@ -1,0 +1,20 @@
+#!/bin/bash
+
+dir=$(pwd)
+cd "/Users/bakribbs/GitHub/Cloud/Cloud-Native/Kabanero/stacks/ci/build/prefetch"
+# Fetched from https://github.com/appsody/stacks/releases/latest/download/incubator-index.yaml on Fri Sep 27 16:14:11 EDT 2019
+# https://github.com/appsody/stacks/releases/download/nodejs-v0.2.5/incubator.nodejs.templates.simple.tar.gz
+checksum="8af348169c8077a28bc991f07d4c00c70335a508 *incubator.nodejs.templates.simple.tar.gz"
+if echo "$checksum" | shasum --status -c -
+then
+    if [ "$1" == "0.2.5" ]
+    then
+        echo ok
+    else
+        echo "0.2.5"
+    fi
+else
+    echo nomatch
+fi
+cd $dir
+

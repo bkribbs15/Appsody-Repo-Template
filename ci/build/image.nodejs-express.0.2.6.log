@@ -1,0 +1,97 @@
+>  docker build --build-arg GIT_ORG_REPO=appsody/stacks --build-arg IMAGE_REGISTRY_ORG=appsody --build-arg STACK_ID=nodejs-express --build-arg MAJOR_VERSION=0 --build-arg MINOR_VERSION=2 --build-arg PATCH_VERSION=6 --label org.opencontainers.image.created=2019-09-27T16:14:12-0400 --label org.opencontainers.image.version=0.2.6 --label org.opencontainers.image.revision=8a4149f6f7777eaca74f3ca3cf686c482b3dcb1c --label appsody.stack=appsody/nodejs-express:0.2.6 -t appsody/nodejs-express -t appsody/nodejs-express:0.2.6 -t appsody/nodejs-express:0 -t appsody/nodejs-express:0.2 -f /Users/bakribbs/GitHub/Cloud/Cloud-Native/Kabanero/stacks/incubator/nodejs-express/image/Dockerfile-stack /Users/bakribbs/GitHub/Cloud/Cloud-Native/Kabanero/stacks/incubator/nodejs-express/image
+Sending build context to Docker daemon  29.18kB
+Step 1/29 : FROM appsody/nodejs:0.2
+ ---> ee5c4ec3c06f
+Step 2/29 : ENV APPSODY_MOUNTS=/:/project/user-app
+ ---> Using cache
+ ---> 325c124b0ddf
+Step 3/29 : ENV APPSODY_DEPS=/project/user-app/node_modules
+ ---> Using cache
+ ---> ef429db0a443
+Step 4/29 : ENV APPSODY_WATCH_DIR=/project/user-app
+ ---> Using cache
+ ---> e9bebb263cae
+Step 5/29 : ENV APPSODY_WATCH_IGNORE_DIR=/project/user-app/node_modules
+ ---> Using cache
+ ---> fcbd6624c05c
+Step 6/29 : ENV APPSODY_WATCH_REGEX="^.*.js$"
+ ---> Using cache
+ ---> 2b591fa82275
+Step 7/29 : ENV APPSODY_INSTALL="npm install --prefix user-app && npm audit fix --prefix user-app"
+ ---> Using cache
+ ---> 678c665f302d
+Step 8/29 : ENV APPSODY_RUN="npm start"
+ ---> Using cache
+ ---> 8138a44b077f
+Step 9/29 : ENV APPSODY_RUN_ON_CHANGE="npm start"
+ ---> Using cache
+ ---> 3973ba80495f
+Step 10/29 : ENV APPSODY_RUN_KILL=true
+ ---> Using cache
+ ---> 4e3ab3fe6f86
+Step 11/29 : ENV APPSODY_DEBUG="npm run debug"
+ ---> Using cache
+ ---> 8f6e3146ef35
+Step 12/29 : ENV APPSODY_DEBUG_ON_CHANGE="npm run debug"
+ ---> Using cache
+ ---> 1839823d8ba2
+Step 13/29 : ENV APPSODY_DEBUG_KILL=true
+ ---> Using cache
+ ---> 42936ac2eac7
+Step 14/29 : ENV APPSODY_TEST="npm test && npm test --prefix user-app"
+ ---> Using cache
+ ---> e023ebe8deaf
+Step 15/29 : ENV APPSODY_TEST_ON_CHANGE=""
+ ---> Using cache
+ ---> 7dd3fea4a0dd
+Step 16/29 : ENV APPSODY_TEST_KILL=false
+ ---> Using cache
+ ---> bae411209853
+Step 17/29 : COPY ./LICENSE /licenses/
+ ---> Using cache
+ ---> 611f40f5d6c8
+Step 18/29 : COPY ./project /project
+ ---> Using cache
+ ---> 2cdd4212cc00
+Step 19/29 : COPY ./config /config
+ ---> Using cache
+ ---> 3999715b4529
+Step 20/29 : WORKDIR /project
+ ---> Using cache
+ ---> 2ee7599c8442
+Step 21/29 : RUN npm install && npm audit fix
+ ---> Using cache
+ ---> 8fb5eb84e164
+Step 22/29 : ENV PORT=3000
+ ---> Using cache
+ ---> af31128dde49
+Step 23/29 : ENV NODE_PATH=/project/user-app/node_modules
+ ---> Using cache
+ ---> 8489ab93ed9f
+Step 24/29 : EXPOSE 3000
+ ---> Using cache
+ ---> f080f17dd434
+Step 25/29 : EXPOSE 9229
+ ---> Using cache
+ ---> 71f0f1cdf91f
+Step 26/29 : LABEL appsody.stack=appsody/nodejs-express:0.2.6
+ ---> Using cache
+ ---> 78bd88142db1
+Step 27/29 : LABEL org.opencontainers.image.created=2019-09-27T16:14:12-0400
+ ---> Running in 3375f570f015
+Removing intermediate container 3375f570f015
+ ---> 8ef77754180b
+Step 28/29 : LABEL org.opencontainers.image.revision=8a4149f6f7777eaca74f3ca3cf686c482b3dcb1c
+ ---> Running in b08fa83d9fbf
+Removing intermediate container b08fa83d9fbf
+ ---> 1fcf7f9473bb
+Step 29/29 : LABEL org.opencontainers.image.version=0.2.6
+ ---> Running in a307abac387e
+Removing intermediate container a307abac387e
+ ---> 830ef0685aa6
+[Warning] One or more build-args [STACK_ID GIT_ORG_REPO IMAGE_REGISTRY_ORG MAJOR_VERSION MINOR_VERSION PATCH_VERSION] were not consumed
+Successfully built 830ef0685aa6
+Successfully tagged appsody/nodejs-express:latest
+Successfully tagged appsody/nodejs-express:0.2.6
+Successfully tagged appsody/nodejs-express:0
+Successfully tagged appsody/nodejs-express:0.2
